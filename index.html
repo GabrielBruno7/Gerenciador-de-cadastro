@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./CSS/style.css">
+    <link rel="stylesheet" href="./CSS/modal.css">
+    <link rel="stylesheet" href="./CSS/records.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,200;1,800&display=swap" rel="stylesheet">
+    <title>Sistema Tilosca</title>
+</head>
+<body>
+
+    <header class="title">
+        <h2>MANUTENÇÃO COMPUTADORES E NOTEBOOKS</h1>
+    </header>
+ <div class="main">   
+
+    <button  class="cadastro_btn" id="cadastrarCliente">CADASTRAR NOVO</button>
+    <table>
+        <tr>
+            <th>OS</th>
+            <th>NOME</th>
+            <th>PC OU NOTEBOOK</th>
+            <th>DESCRIÇÃO</th>
+            <th>STATUS</th>
+        </tr>
+        <tr>
+            <td>4987</td>
+            <td>Gabriel Bruno</td>
+            <td>PC</td>
+            <td>Computador apresentou problema de memoria</td>
+            <td>PRONTO</td>
+            <td class="btn_crud">
+                <button type="button" class="button_green">EDITAR</button>
+                <button type="button" class="button_red">EXCLUIR</button>
+            </td>
+        </tr>
+
+        <tr>
+            <td>4977</td>
+            <td>Luiz Reginaldo</td>
+            <td>NOT</td>
+            <td>Troca de fonte.</td>
+            <td>AGUARDANDO CLIENTE APROVAR</td>
+            <td class="btn_crud">
+                <button type="button" class="button_green">EDITAR</button>
+                <button type="button" class="button_red">EXCLUIR</button>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>4976</td>
+            <td>Ruti Carmem</td>
+            <td>PC</td>
+            <td>Troca de placa.</td>
+            <td>PRONTO</td>
+            <td class="btn_crud">
+                <button type="button" class="button_green">EDITAR</button>
+                <button type="button" class="button_red">EXCLUIR</button>
+            </td>
+        </tr>
+
+        <tr>
+            <td>4975</td>
+            <td>José Carlos</td>
+            <td>NOT</td>
+            <td>Tela com defeito</td>
+            <td>AGUARDANDO CLIENTE APROVAR</td>
+            <td class="btn_crud">
+                <button type="button" class="button_green">EDITAR</button>
+                <button type="button" class="button_red">EXCLUIR</button>
+            </td>
+        </tr>
+    </table>
+
+</div>
+<div class="modal" id="modal">
+    <div class="modal-content">
+        <header class="modal-header">
+            <h2>Novo cadastro</h2>
+            <span class="modal-close" id="modalClose">&#10006;</span>
+        </header>
+        <form class="modal-form">
+            <input type="text" class="modal-field" placeholder="OS">
+            <input type="text" class="modal-field" placeholder="NOME">
+            <input type="text" class="modal-field" placeholder="PC OU NOTEBOOK">
+            <input type="text" class="modal-field" placeholder="DESCRIÇÃO">
+            <input type="text" class="modal-field" placeholder="STATUS">
+        </form>
+        <footer class="modal-footer">
+            <button class="button_green modal_btn_s">Salvar</button>
+            <button class="button_red modal_btn_c">Cancelar</button>
+        </footer>
+    </div>
+</div>
+
+
+</div>
+
+<script src="./script.js"></script>
+</body>
+</html>
