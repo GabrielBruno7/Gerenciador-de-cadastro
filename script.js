@@ -2,17 +2,15 @@
 const openModal = () => document.getElementById('modal')
     .classList.add('active')
 
-const closeModal = () => document.getElementById('modal')
+const closeModal = () =>
+ { document.getElementById('modal')
+    
     .classList.remove('active')
+     clearFields()
+    
+     }
 
 
-const tempClient = {
-    os: "12313",
-    nome:"valjoreler",
-    pcNotebook:"Notebook",
-    descriçao:"Placa de video",
-    statuss:"PRONTO",
-}
 
 
 const getLocalStorage = () => JSON.parse(localStorage.getItem('db_client')) ?? []
@@ -40,25 +38,69 @@ const createClient = (client) => {
 }
 
 
+//Interação com layout
+
+const isValidFields = () => {
+ return document.getElementById('form').reportValidity()
+
+}
+
+const clearFields =  () => {
+   const fields = document.querySelectorAll(".modal-field")
+   fields.forEach(fields => fields.value = "")
+
+}
+
+
+
+const saveClient = () => {
+    if (isValidFields()){
+        const client = {
+            os: document.getElementById("os_value").value,
+            nome: document.getElementById("nome_value").value,
+            pcNotebook: document.getElementById("pcNotebook_value").value,
+            descriçao: document.getElementById("descriçao_value").value,
+            statuss: document.getElementById("status_value").value,
+        }
+        createClient(client)
+        closeModal()
+        updateClient()
+    }
+}
+
+const createRow = (client) => {
+   const newRow = document.createElement('tr')
+   newRow.innerHTML = `
+                            <td>${client.os}</td>
+                            <td>${client.nome}</td>
+                            <td>${client.pcNotebook}</td>
+                            <td>${client.descriçao}</td>
+                            <td>${client.statuss}</td>
+                            <td class="btn_crud">
+                                <button type="button" class="button_green">EDITAR</button>
+                                <button type="button" class="button_red">EXCLUIR</button>
+                            </td>
+                    `
+    document.getElementById('tbody_client').appendChild(newRow)
+}
+
+const clearTable = () =>{
+    const rows = document.getElementById("tableClient>tbody>td")
+    rows.forEach(row => row.removeChild(rows))
+}
+
+
+const updateTable = () => {
+    const dbClient = readClient()
+    dbClient.forEach(createRow)
+}
+
+updateTable()
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//Eventos
 
 
 document.getElementById('cadastrarCliente')
@@ -66,3 +108,7 @@ document.getElementById('cadastrarCliente')
 
 document.getElementById('modalClose')
     .addEventListener('click', closeModal)
+
+document.getElementById('btn_salvar')
+       .addEventListener('click', saveClient)
+       

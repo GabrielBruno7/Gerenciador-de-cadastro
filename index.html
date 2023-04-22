@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./CSS/records.css">
     
     <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,200;1,800&display=swap" rel="stylesheet">
-    <title>Sistema Tilosca</title>
+    <title>GDC</title>
 </head>
 <body>
 
@@ -19,7 +19,7 @@
  <div class="main">   
 
     <button  class="cadastro_btn" id="cadastrarCliente">CADASTRAR NOVO</button>
-    <table>
+    <table id ="tableClient">
         <tr>
             <th>OS</th>
             <th>NOME</th>
@@ -27,54 +27,9 @@
             <th>DESCRIÇÃO</th>
             <th>STATUS</th>
         </tr>
-        <tr>
-            <td>4987</td>
-            <td>Gabriel Bruno</td>
-            <td>PC</td>
-            <td>Computador apresentou problema de memoria</td>
-            <td>PRONTO</td>
-            <td class="btn_crud">
-                <button type="button" class="button_green">EDITAR</button>
-                <button type="button" class="button_red">EXCLUIR</button>
-            </td>
-        </tr>
-
-        <tr>
-            <td>4977</td>
-            <td>Luiz Reginaldo</td>
-            <td>NOT</td>
-            <td>Troca de fonte.</td>
-            <td>AGUARDANDO CLIENTE APROVAR</td>
-            <td class="btn_crud">
-                <button type="button" class="button_green">EDITAR</button>
-                <button type="button" class="button_red">EXCLUIR</button>
-            </td>
-        </tr>
-
-
-        <tr>
-            <td>4976</td>
-            <td>Ruti Carmem</td>
-            <td>PC</td>
-            <td>Troca de placa.</td>
-            <td>PRONTO</td>
-            <td class="btn_crud">
-                <button type="button" class="button_green">EDITAR</button>
-                <button type="button" class="button_red">EXCLUIR</button>
-            </td>
-        </tr>
-
-        <tr>
-            <td>4975</td>
-            <td>José Carlos</td>
-            <td>NOT</td>
-            <td>Tela com defeito</td>
-            <td>AGUARDANDO CLIENTE APROVAR</td>
-            <td class="btn_crud">
-                <button type="button" class="button_green">EDITAR</button>
-                <button type="button" class="button_red">EXCLUIR</button>
-            </td>
-        </tr>
+        <tbody id="tbody_client">
+          
+        </tbody>
     </table>
 
 </div>
@@ -84,15 +39,15 @@
             <h2>Novo cadastro</h2>
             <span class="modal-close" id="modalClose">&#10006;</span>
         </header>
-        <form class="modal-form">
-            <input type="text" class="modal-field" placeholder="OS">
-            <input type="text" class="modal-field" placeholder="NOME">
-            <input type="text" class="modal-field" placeholder="PC OU NOTEBOOK">
-            <input type="text" class="modal-field" placeholder="DESCRIÇÃO">
-            <input type="text" class="modal-field" placeholder="STATUS">
+        <form id="form"class="modal-form">
+            <input type="text" id="os_value" class="modal-field" placeholder="OS" required>
+            <input type="text" id="nome_value" class="modal-field" placeholder="NOME" required>
+            <input type="text" id="pcNotebook_value" class="modal-field" placeholder="PC OU NOTEBOOK"  required>
+            <input type="text" id="descriçao_value" class="modal-field" placeholder="DESCRIÇÃO"   required>
+            <input type="text" id="status_value" class="modal-field" placeholder="STATUS"   required>
         </form>
         <footer class="modal-footer">
-            <button class="button_green modal_btn_s">Salvar</button>
+            <button class="button_green modal_btn_s" id="btn_salvar">Salvar</button>
             <button class="button_red modal_btn_c">Cancelar</button>
         </footer>
     </div>
