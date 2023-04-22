@@ -2,13 +2,11 @@
 const openModal = () => document.getElementById('modal')
     .classList.add('active')
 
-const closeModal = () =>
- { document.getElementById('modal')
-    
-    .classList.remove('active')
-     clearFields()
-    
-     }
+const closeModal = () => {
+    clearFields()
+    document.getElementById('modal').classList.remove('active')
+}
+
 
 
 
@@ -63,35 +61,37 @@ const saveClient = () => {
             statuss: document.getElementById("status_value").value,
         }
         createClient(client)
+        updateTable()
         closeModal()
-        updateClient()
+       
     }
 }
 
 const createRow = (client) => {
    const newRow = document.createElement('tr')
-   newRow.innerHTML = `
-                            <td>${client.os}</td>
-                            <td>${client.nome}</td>
-                            <td>${client.pcNotebook}</td>
-                            <td>${client.descriçao}</td>
-                            <td>${client.statuss}</td>
-                            <td class="btn_crud">
-                                <button type="button" class="button_green">EDITAR</button>
-                                <button type="button" class="button_red">EXCLUIR</button>
-                            </td>
-                    `
-    document.getElementById('tbody_client').appendChild(newRow)
+newRow.innerHTML = `
+        <td>${client.os}</td>
+        <td>${client.nome}</td>
+        <td>${client.pcNotebook}</td>
+        <td>${client.descriçao}</td>
+        <td>${client.statuss}</td>
+        <td class="btn_crud">
+            <button type="button" class="button_green">EDITAR</button>
+            <button type="button" class="button_red">EXCLUIR</button>
+        </td>
+    `
+    document.querySelector('#tableClient>tbody').appendChild(newRow)
 }
 
 const clearTable = () =>{
-    const rows = document.getElementById("tableClient>tbody>td")
-    rows.forEach(row => row.removeChild(rows))
+    const rows = document.querySelectorAll('#tableClient>tbody tr')
+    rows.forEach(row => row.parentNode.removeChild(row))
 }
 
 
 const updateTable = () => {
     const dbClient = readClient()
+    clearTable()
     dbClient.forEach(createRow)
 }
 
