@@ -60,14 +60,23 @@ const saveClient = () => {
             descriçao: document.getElementById("descriçao_value").value,
             statuss: document.getElementById("status_value").value,
         }
-        createClient(client)
-        updateTable()
-        closeModal()
+
+        const index = document.getElementById("os_value").dataset.index
+        if (index =="new"){
+            createClient(client)
+            updateTable()
+            closeModal()
+        } else{
+                updateClient(index, client)
+                updateTable()
+                closeModal()
+            }
+        
        
     }
 }
 
-const createRow = (client) => {
+const createRow = (client, index) => {
    const newRow = document.createElement('tr')
 newRow.innerHTML = `
         <td>${client.os}</td>
@@ -76,8 +85,8 @@ newRow.innerHTML = `
         <td>${client.descriçao}</td>
         <td>${client.statuss}</td>
         <td class="btn_crud">
-            <button type="button" class="button_green">EDITAR</button>
-            <button type="button" class="button_red">EXCLUIR</button>
+            <button type="button" class="button_green" id="editar-${index}">EDITAR</button>
+            <button type="button" class="button_red" id="excluir-${index}">EXCLUIR</button>
         </td>
     `
     document.querySelector('#tableClient>tbody').appendChild(newRow)
@@ -95,6 +104,49 @@ const updateTable = () => {
     dbClient.forEach(createRow)
 }
 
+const fillFields = (client) => {
+    document.getElementById("os_value").value = client.os
+    document.getElementById("nome_value").value = client.nome
+    document.getElementById("pcNotebook_value").value = client.pcNotebook
+    document.getElementById("descriçao_value").value = client.descriçao
+    document.getElementById("status_value").value = client.statuss
+    document.getElementById("os_value").dataset.index = client.index
+}
+
+const editClient = (index) => {
+    const client = readClient()[index]
+    client.index = index
+    fillFields(client)
+    openModal()
+}
+
+const editDelete = (event) => {
+    if (event.target.type == 'button') {
+        const [action, index] = event.target.id.split('-')
+
+        if (action == 'editar') {
+            editClient(index)
+        } else {
+            const client = readClient()[index]
+            const response = confirm(`Deseja realmente excluir ${client.os} ?`)
+            if (response){
+                deleteClient(index)
+                updateTable()
+
+            }
+        }
+         
+
+    }
+}
+
+
+
+
+
+
+
+
 updateTable()
 
 
@@ -105,10 +157,16 @@ updateTable()
 
 document.getElementById('cadastrarCliente')
     .addEventListener('click', openModal)
+    
+document.getElementById('btn_cancelar')
+    .addEventListener('click', closeModal)
 
 document.getElementById('modalClose')
     .addEventListener('click', closeModal)
 
 document.getElementById('btn_salvar')
-       .addEventListener('click', saveClient)
+    .addEventListener('click', saveClient)
+
+document.querySelector('#tableClient>tbody')
+    .addEventListener('click', editDelete)
        

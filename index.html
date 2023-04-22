@@ -14,7 +14,7 @@
 <body>
 
     <header class="title">
-        <h2>MANUTENÇÃO COMPUTADORES E NOTEBOOKS</h1>
+        <H2>TABELA DE MANUTENÇÃO</H2>
     </header>
  <div class="main">   
 
@@ -40,7 +40,7 @@
             <span class="modal-close" id="modalClose">&#10006;</span>
         </header>
         <form id="form"class="modal-form">
-            <input type="text" id="os_value" class="modal-field" placeholder="OS" required>
+            <input type="text" data-index="new" id="os_value" class="modal-field" placeholder="OS" required>
             <input type="text" id="nome_value" class="modal-field" placeholder="NOME" required>
             <input type="text" id="pcNotebook_value" class="modal-field" placeholder="PC OU NOTEBOOK"  required>
             <input type="text" id="descriçao_value" class="modal-field" placeholder="DESCRIÇÃO"   required>
@@ -48,7 +48,7 @@
         </form>
         <footer class="modal-footer">
             <button class="button_green modal_btn_s" id="btn_salvar">Salvar</button>
-            <button class="button_red modal_btn_c">Cancelar</button>
+            <button id="btn_cancelar"class="button_red modal_btn_c">Cancelar</button>
         </footer>
     </div>
 </div>
